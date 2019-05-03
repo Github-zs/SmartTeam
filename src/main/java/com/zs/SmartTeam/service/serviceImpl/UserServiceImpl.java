@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
     public List<UserModel> selectAll() {
         return userModelMapper.selectAll();
     }
+
+    @Override
+    public UserModel selectByLoginName(String loginName) {
+        return userModelMapper.selectByLoginName(loginName);
+    }
 }

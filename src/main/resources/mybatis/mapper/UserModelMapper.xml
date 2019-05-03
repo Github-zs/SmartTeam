@@ -56,6 +56,11 @@
     from user
     where user_id = #{userId,jdbcType=BIGINT}
   </select>
+  <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_name, login_name, login_password, group_belonged
+    from "SmartTeam".user
+    where login_name = #{loginName,jdbcType=VARCHAR};
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     <!--
       WARNING - @mbggenerated
