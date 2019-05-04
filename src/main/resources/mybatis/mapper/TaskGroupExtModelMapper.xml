@@ -65,4 +65,10 @@
     select id, task_belonged, group_belonged, numerical_order, task_url
     from task_group_ext
   </select>
+  <select id="selectCountByGroup" parameterType="java.lang.Long" resultType="java.lang.Long">
+    select count(*)
+    from "SmartTeam".task_group_ext
+    where group_belonged = #{groupBelonged,jdbcType=BIGINT}
+    group by group_belonged;
+  </select>
 </mapper>
