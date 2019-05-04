@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry location="/home/zhais/Downloads/MyBatisGenerator/postgresql-9.4.1211.jar" />
+
+  <context id="ForSampleTables" targetRuntime="MyBatis3Simple">
+    <jdbcConnection driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://localhost:5432/SmartTeamDB"
+        userId="postgres"
+        password="postgres">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.zs.SmartTeam.model" targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/model">
+      <property name="enableSubPackages" value="false" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="com.zs.SmartTeam.resource.mapper"  targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/XML">
+      <property name="enableSubPackages" value="false" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.zs.SmartTeam.mapper"  targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/mapper">
+      <property name="enableSubPackages" value="false" />
+    </javaClientGenerator>
+ 
+    <table tableName="share_management" domainObjectName="ShareManagementModel" >
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="share_id" sqlStatement="JDBC" identity="true"/>
+    </table>
+
+  </context>
+</generatorConfiguration>
