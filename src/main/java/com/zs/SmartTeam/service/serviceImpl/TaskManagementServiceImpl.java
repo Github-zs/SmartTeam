@@ -1,8 +1,10 @@
 package com.zs.SmartTeam.service.serviceImpl;
 
 import com.zs.SmartTeam.mapper.TaskManagementModelMapper;
+import com.zs.SmartTeam.model.GroupModel;
 import com.zs.SmartTeam.model.TaskGroupExtModel;
 import com.zs.SmartTeam.model.TaskManagementModel;
+import com.zs.SmartTeam.service.GroupService;
 import com.zs.SmartTeam.service.TaskGroupExtService;
 import com.zs.SmartTeam.service.TaskManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     @Autowired
     private TaskGroupExtModel taskGroupExtModel;
 
+    @Autowired
+    private GroupService groupService;
+
     @Override
     public int insert(TaskManagementModel taskManagementModel) {
 
@@ -46,7 +51,10 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     public int updateTaskExt(TaskGroupExtModel extModel) {
         extModel.setId(taskExtId);
         extModel.setNumericalOrder(taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged()) + 1);
-        extModel.setTaskUrl(String.valueOf(taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged()) + 1) + extModel.getGroupBelonged());
+
+        GroupModel groupModel = groupService.selectById(extModel.getGroupBelonged());
+
+        extModel.setTaskUrl(groupModel.getGroupName() + "-" + String.valueOf(taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged()) + 1));
         extModel.setTaskBelonged(taskId);
 
         return taskGroupExtService.updateByPrimaryKey(extModel);

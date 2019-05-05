@@ -1,5 +1,8 @@
 package com.zs.SmartTeam.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class GroupModel {
     /**
      *
