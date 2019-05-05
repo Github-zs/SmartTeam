@@ -12,8 +12,10 @@ public class TaskGroupExtController {
     @Autowired
     private TaskGroupExtService taskGroupExtService;
 
-    @RequestMapping(value = "/selectCountByGroup", method = RequestMethod.GET)
+    @RequestMapping(value = "/taskExt/selectCountByGroup", method = RequestMethod.GET)
     public Long selectCountByGroup(Long groupBelonged) {
         return taskGroupExtService.selectCountByGroup(groupBelonged);
     }
+
+
 }
