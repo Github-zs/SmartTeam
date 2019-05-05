@@ -26,5 +26,9 @@ public class TaskManagementController {
         return service.updateTaskExt(taskGroupExtModel);
     }
 
+    @RequestMapping(value = {"/selectTaskById"}, method = RequestMethod.GET)
+    public TaskManagementModel selectTaskById(Long taskId) {
+        return service.selectById(taskId);
+    }
 
 }

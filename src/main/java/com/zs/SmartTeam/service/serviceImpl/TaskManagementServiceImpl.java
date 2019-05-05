@@ -60,5 +60,10 @@ public class TaskManagementServiceImpl implements TaskManagementService {
         return taskGroupExtService.updateByPrimaryKey(extModel);
     }
 
+    @Override
+    public TaskManagementModel selectById(Long taskId) {
+        return mapper.selectByPrimaryKey(taskId);
+    }
+
 
 }

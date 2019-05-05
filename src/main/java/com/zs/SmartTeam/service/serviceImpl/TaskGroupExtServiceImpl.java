@@ -6,6 +6,8 @@ import com.zs.SmartTeam.service.TaskGroupExtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskGroupExtServiceImpl implements TaskGroupExtService {
 
@@ -25,5 +27,10 @@ public class TaskGroupExtServiceImpl implements TaskGroupExtService {
     @Override
     public int updateByPrimaryKey(TaskGroupExtModel taskGroupExtModel) {
         return taskGroupExtModelMapper.updateByPrimaryKey(taskGroupExtModel);
+    }
+
+    @Override
+    public List<TaskGroupExtModel> selectAll() {
+        return taskGroupExtModelMapper.selectAll();
     }
 }

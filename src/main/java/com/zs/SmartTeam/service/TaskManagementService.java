@@ -8,4 +8,6 @@ public interface TaskManagementService {
     int insert(TaskManagementModel taskManagementModel);
 
     int updateTaskExt(TaskGroupExtModel taskGroupExtModel);
+
+    TaskManagementModel selectById(Long taskId);
 }
