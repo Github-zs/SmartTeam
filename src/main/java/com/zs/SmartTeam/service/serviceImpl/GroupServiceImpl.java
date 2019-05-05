@@ -6,6 +6,8 @@ import com.zs.SmartTeam.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GroupServiceImpl implements GroupService{
 
@@ -15,5 +17,10 @@ public class GroupServiceImpl implements GroupService{
     @Override
     public GroupModel selectById(Long groupId) {
         return groupModelMapper.selectByPrimaryKey(groupId);
+    }
+
+    @Override
+    public List<GroupModel> selectAll() {
+        return groupModelMapper.selectAll();
     }
 }
