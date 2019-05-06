@@ -8,4 +8,6 @@ public interface UserService {
     List<UserModel> selectAll();
 
     UserModel selectByLoginName(String loginName);
+
+    UserModel selectById(Long userId);
 }

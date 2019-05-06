@@ -53,7 +53,7 @@
       This element was generated on Sat May 04 06:23:37 CST 2019.
     -->
     select user_id, user_name, login_name, login_password, group_belonged
-    from user
+    from "SmartTeam".user
     where user_id = #{userId,jdbcType=BIGINT}
   </select>
   <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">

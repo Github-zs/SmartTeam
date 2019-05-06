@@ -16,14 +16,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/userGetAll", method = RequestMethod.GET)
+    @RequestMapping(value = { "/userGetAll" }, method = RequestMethod.GET)
     public List<UserModel> selectAll() {
         return userService.selectAll();
     }
 
-    @RequestMapping(value = "/userGetByLoginName", method = RequestMethod.GET)
+    @RequestMapping(value = { "/userGetByLoginName" }, method = RequestMethod.GET)
     public UserModel selectByLoginName(String loginName) {
         return userService.selectByLoginName(loginName);
     }
 
+    @RequestMapping(value = { "/getUserById" }, method = RequestMethod.GET)
+    public UserModel selectUserById(Long userId) {
+        return userService.selectById(userId);
+    }
 }
