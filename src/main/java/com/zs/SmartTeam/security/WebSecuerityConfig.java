@@ -41,7 +41,9 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        http.httpBasic()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/v2/api-docs/**").permitAll()
