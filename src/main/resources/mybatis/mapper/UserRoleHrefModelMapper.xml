@@ -62,6 +62,6 @@
   <select id="selectRoleByLoginName" parameterType="java.lang.String" resultType="java.lang.String">
     select role_code
     from "SmartTeam".user_role_href
-    when user_login_name = {userLoginName}
+    where user_login_name = #{userLoginName}
   </select>
 </mapper>
