@@ -1,31 +1,54 @@
 package com.zs.SmartTeam.security;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("classpath:auth.properties")
 public class AuthParameters {
 
-    private String jwtTokenSecret;
-    private long tokenExpiredMs;
+    @Value("${jwt.header}")
+    private String tokenHeader;
 
-    public String getJwtTokenSecret() {
-        return jwtTokenSecret;
+    @Value("${jwt.secret")
+    private String secret;
+
+    @Value("${jwt.expiration}")
+    private long expirationDate;
+
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
+
+    public String getTokenHeader() {
+        return tokenHeader;
     }
 
-    @Value("${jwtTokenSecret}")
-    public void setJwtTokenSecret(String jwtTokenSecret) {
-        this.jwtTokenSecret = jwtTokenSecret;
+    public void setTokenHeader(String tokenHeader) {
+        this.tokenHeader = tokenHeader;
     }
 
-    public long getTokenExpiredMs() {
-        return tokenExpiredMs;
+    public String getSecret() {
+        return secret;
     }
 
-    @Value("${tokenExpiredMs}")
-    public void setTokenExpiredMs(long tokenExpiredMs) {
-        this.tokenExpiredMs = tokenExpiredMs;
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    public long getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(long expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getTokenHead() {
+        return tokenHead;
+    }
+
+    public void setTokenHead(String tokenHead) {
+        this.tokenHead = tokenHead;
     }
 }
