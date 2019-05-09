@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 @MapperScan(value = "com.zs.SmartTeam.mapper")
 public class SmartTeamApplication {
 
