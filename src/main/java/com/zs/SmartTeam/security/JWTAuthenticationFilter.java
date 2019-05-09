@@ -1,6 +1,7 @@
 package com.zs.SmartTeam.security;
 
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
+
+    @Value("${jwt.secret}")
+    private String secret;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);

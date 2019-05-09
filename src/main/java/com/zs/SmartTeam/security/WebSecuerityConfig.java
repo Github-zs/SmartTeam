@@ -44,33 +44,6 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
     }
 
-//    @Override
-//    public void configure(HttpSecurity http) throws Exception {
-//        http.httpBasic()
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//                .and().csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/v2/api-docs/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and().formLogin().loginProcessingUrl("/api/login");
-//                .successHandler(successHandler)
-//                .failureHandler(failHandler)
-//                .and().exceptionHandling().authenticationEntryPoint(entryPoint);
-//    }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.httpBasic()
-//            .and()
-//            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//            .and().csrf().disable()
-//            .authorizeRequests()
-//            .antMatchers("/index.html", "/", "/home", "/login").permitAll()
-//            .anyRequest().authenticated()
-//            .and().formLogin();
-//    }
-
     @Bean
     public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
         return new JwtAuthenticationTokenFilter();
