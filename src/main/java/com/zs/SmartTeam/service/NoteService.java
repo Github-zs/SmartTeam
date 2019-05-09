@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface NoteService {
     List<NoteManagementModel> selectAll();
+
+    int insert(NoteManagementModel noteManagementModel);
 }

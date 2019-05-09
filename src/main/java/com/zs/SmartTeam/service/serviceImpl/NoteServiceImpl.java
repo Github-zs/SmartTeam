@@ -6,6 +6,7 @@ import com.zs.SmartTeam.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,5 +18,11 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public List<NoteManagementModel> selectAll() {
         return mapper.selectAll();
+    }
+
+    @Override
+    public int insert(NoteManagementModel noteManagementModel) {
+        noteManagementModel.setCreateDate(new Date());
+        return mapper.insert(noteManagementModel);
     }
 }
