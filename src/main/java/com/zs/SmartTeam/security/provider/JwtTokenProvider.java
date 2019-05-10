@@ -52,10 +52,10 @@ public class JwtTokenProvider {
         String username = ((org.springframework.security.core.userdetails.User) authentication.getPrincipal()).getUsername();
 
         //expire time
-        Date expireTime =new Date(System.currentTimeMillis() + authParameters.getExpirationDate() * 1000);
+        Date expireTime =new Date(System.currentTimeMillis() + authParameters.getExpirationDate());
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put("username", username);
+        claims.put(CLAIM_KEY_USERNAME, username);
 
         //create token
         String token =
