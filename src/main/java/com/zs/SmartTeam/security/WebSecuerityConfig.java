@@ -61,11 +61,18 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
         httpSecurity.headers().cacheControl();
     }
 
+
     //装载BCrypt密码编码器
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public NoOpPasswordEncoder passwordEncoder() {
+        return  (NoOpPasswordEncoder)NoOpPasswordEncoder.getInstance();
     }
+
+    //装载BCrypt密码编码器
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
