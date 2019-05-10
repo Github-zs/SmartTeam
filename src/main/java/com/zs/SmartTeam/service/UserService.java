@@ -10,4 +10,6 @@ public interface UserService {
     UserModel selectByLoginName(String loginName);
 
     UserModel selectById(Long userId);
+
+    int insert(UserModel userModel);
 }

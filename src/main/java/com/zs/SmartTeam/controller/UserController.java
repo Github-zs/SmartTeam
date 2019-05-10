@@ -3,10 +3,8 @@ package com.zs.SmartTeam.controller;
 import com.zs.SmartTeam.model.UserModel;
 import com.zs.SmartTeam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,10 @@ public class UserController {
     @RequestMapping(value = { "/getUserById" }, method = RequestMethod.GET)
     public UserModel selectUserById(Long userId) {
         return userService.selectById(userId);
+    }
+
+    @RequestMapping(value = { "/user/register" }, method = RequestMethod.POST)
+    public int insert(@RequestBody  UserModel userModel) {
+        return userService.insert(userModel);
     }
 }
