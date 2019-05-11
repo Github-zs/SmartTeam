@@ -1,5 +1,6 @@
 package com.zs.SmartTeam.controller;
 
+import com.zs.SmartTeam.common.Utils;
 import com.zs.SmartTeam.model.TaskGroupExtModel;
 import com.zs.SmartTeam.model.TaskManagementModel;
 import com.zs.SmartTeam.service.TaskGroupExtService;
@@ -10,14 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class TaskManagementController {
 
     @Autowired
     private TaskManagementService service;
 
+    @Autowired
+    private Utils utils;
+
     @RequestMapping(value = { "/addTask" }, method = RequestMethod.POST)
-    public int insert(@RequestBody TaskManagementModel taskManagementModel) throws Exception {
+    public int insert(HttpServletRequest request,  @RequestBody TaskManagementModel taskManagementModel) throws Exception {
+        Long userId = utils.returnLoginUserId(request);
+        taskManagementModel.setTaskReporter(userId);
         return service.insert(taskManagementModel);
     }
 

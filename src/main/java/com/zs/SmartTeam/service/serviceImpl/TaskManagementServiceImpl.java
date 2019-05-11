@@ -35,7 +35,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     public int insert(TaskManagementModel taskManagementModel) {
 
         taskManagementModel.setCreateDate(new Date());
-        taskManagementModel.setTaskReporter(1L);
         taskManagementModel.setTaskStatus("创建");
         int num = mapper.insert(taskManagementModel);
 
@@ -50,11 +49,15 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     @Override
     public int updateTaskExt(TaskGroupExtModel extModel) {
         extModel.setId(taskExtId);
-        extModel.setNumericalOrder(taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged()) + 1);
+        Long count = taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged());
+        if (count == null) {
+            count = 0L;
+        }
+        extModel.setNumericalOrder(count + 1);
 
         GroupModel groupModel = groupService.selectById(extModel.getGroupBelonged());
 
-        extModel.setTaskUrl(groupModel.getGroupName() + "-" + String.valueOf(taskGroupExtService.selectCountByGroup(extModel.getGroupBelonged()) + 1));
+        extModel.setTaskUrl(groupModel.getGroupName() + "-" + String.valueOf(count + 1));
         extModel.setTaskBelonged(taskId);
 
         return taskGroupExtService.updateByPrimaryKey(extModel);

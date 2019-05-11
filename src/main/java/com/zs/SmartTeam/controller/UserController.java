@@ -30,8 +30,9 @@ public class UserController {
     }
 
     @RequestMapping(value = { "/getUserById" }, method = RequestMethod.GET)
-    public UserModel selectUserById(Long userId) {
-        return userService.selectById(userId);
+    public UserModel selectUserById(String userId) {
+
+        return userService.selectById(Long.valueOf(userId));
     }
 
     @RequestMapping(value = { "/user/register" }, method = RequestMethod.POST)
