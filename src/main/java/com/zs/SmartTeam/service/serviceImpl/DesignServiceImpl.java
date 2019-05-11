@@ -39,4 +39,9 @@ public class DesignServiceImpl implements DesignService {
         return mapper.updateByPrimaryKey(designManagementModel);
     }
 
+    @Override
+    public List<DesignManagementModel> selectByAuthor(Long designAuthor) {
+        return mapper.selectByAuthor(designAuthor);
+    }
+
 }

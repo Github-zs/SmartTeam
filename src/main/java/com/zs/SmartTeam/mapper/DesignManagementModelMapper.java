@@ -46,4 +46,12 @@ public interface DesignManagementModelMapper {
      * @mbggenerated Fri May 10 04:56:49 CST 2019
      */
     int updateByPrimaryKey(DesignManagementModel record);
+
+    /**
+     * select design list by author id
+     *
+     * @param designAuthor
+     * @return
+     */
+    List<DesignManagementModel> selectByAuthor(Long designAuthor);
 }

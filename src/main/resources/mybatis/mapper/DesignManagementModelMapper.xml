@@ -67,4 +67,9 @@
     select design_id, design_content, design_author, create_date, update_date, design_title
     from "SmartTeam".design_management
   </select>
+  <select id="selectByAuthor" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select design_id, design_content, design_author, create_date, update_date, design_title
+    from "SmartTeam".design_management
+    where design_author = #{designAuthor}
+  </select>
 </mapper>

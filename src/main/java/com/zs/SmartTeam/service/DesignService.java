@@ -14,4 +14,6 @@ public interface DesignService {
     int delete(Long designId);
 
     int updateById(DesignManagementModel designManagementModel);
+
+    List<DesignManagementModel> selectByAuthor(Long designAuthor);
 }
