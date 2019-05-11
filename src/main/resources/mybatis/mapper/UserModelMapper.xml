@@ -75,4 +75,9 @@
     select user_id, user_name, login_name, login_password, group_belonged
     from "SmartTeam".user
   </select>
+  <select id="selectOldPassword" resultType="java.lang.String" parameterType="java.lang.Long">
+    select login_password
+    from "SmartTeam".user
+    where user_id = #{userId}
+  </select>
 </mapper>

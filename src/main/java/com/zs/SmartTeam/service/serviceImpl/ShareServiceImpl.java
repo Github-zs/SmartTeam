@@ -6,6 +6,7 @@ import com.zs.SmartTeam.service.ShareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,7 @@ public class ShareServiceImpl implements ShareService {
 
     @Override
     public int insert(ShareManagementModel shareManagementModel) {
+        shareManagementModel.setCreateDate(new Date());
         return mapper.insert(shareManagementModel);
     }
 

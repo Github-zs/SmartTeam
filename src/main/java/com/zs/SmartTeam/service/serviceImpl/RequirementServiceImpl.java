@@ -6,6 +6,7 @@ import com.zs.SmartTeam.service.RequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,7 @@ public class RequirementServiceImpl implements RequirementService {
 
     @Override
     public int insert(RequirementManagementModel requirementManagementModel) {
+        requirementManagementModel.setCreateDate(new Date());
         return mapper.insert(requirementManagementModel);
     }
 

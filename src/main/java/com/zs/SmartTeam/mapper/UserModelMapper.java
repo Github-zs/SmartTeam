@@ -62,4 +62,14 @@ public interface UserModelMapper {
      * @return
      */
     int resetPassword(UserModel record);
+
+
+    /**
+     *
+     * select user old password by user id
+     *
+     * @param userId
+     * @return
+     */
+    String selectOldPassword(Long userId);
 }

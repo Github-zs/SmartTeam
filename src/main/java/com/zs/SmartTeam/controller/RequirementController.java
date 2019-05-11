@@ -27,7 +27,9 @@ public class RequirementController {
     }
 
     @RequestMapping(value = { "/requirement/add" }, method = RequestMethod.POST)
-    public int insert(@RequestBody RequirementManagementModel requirementManagementModel) {
+    public int insert(HttpServletRequest request, @RequestBody RequirementManagementModel requirementManagementModel) {
+        Long requiremtnAuthor = utils.returnLoginUserId(request);
+        requirementManagementModel.setRequirementAuthor(requiremtnAuthor);
         return service.insert(requirementManagementModel);
     }
 

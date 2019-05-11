@@ -28,7 +28,9 @@ public class ShareController {
     }
 
     @RequestMapping(value = { "/share/add" }, method = RequestMethod.POST)
-    public int insert(@RequestBody  ShareManagementModel shareManagementModel) {
+    public int insert(HttpServletRequest request, @RequestBody  ShareManagementModel shareManagementModel) {
+        Long shareAuthor = utils.returnLoginUserId(request);
+        shareManagementModel.setShareAuthor(shareAuthor);
         return service.insert(shareManagementModel);
     }
 

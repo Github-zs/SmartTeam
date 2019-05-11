@@ -6,6 +6,7 @@ import com.zs.SmartTeam.service.DesignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,7 @@ public class DesignServiceImpl implements DesignService {
 
     @Override
     public int insert(DesignManagementModel designManagementModel) {
+        designManagementModel.setCreateDate(new Date());
         return mapper.insert(designManagementModel);
     }
 

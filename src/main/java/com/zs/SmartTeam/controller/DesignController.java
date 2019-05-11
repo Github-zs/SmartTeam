@@ -28,7 +28,9 @@ public class DesignController {
     }
 
     @RequestMapping(value = { "/design/add" }, method = RequestMethod.POST)
-    public int insert(@RequestBody DesignManagementModel designManagementModel) {
+    public int insert(HttpServletRequest request, @RequestBody DesignManagementModel designManagementModel) {
+        Long designAuthor = utils.returnLoginUserId(request);
+        designManagementModel.setDesignAuthor(designAuthor);
         return service.insert(designManagementModel);
     }
 

@@ -45,4 +45,10 @@ public class UserController {
         userModel.setUserId(userId);
         return userService.resetPassword(userModel);
     }
+
+    @RequestMapping(value = { "/user/checkOldPassword" }, method = RequestMethod.GET)
+    public Boolean selectOldPassword(HttpServletRequest request, String oldPassword) throws Exception {
+        Long userId = utils.returnLoginUserId(request);
+        return this.userService.checkOldPassword(userId, oldPassword);
+    }
 }

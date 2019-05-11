@@ -56,4 +56,12 @@ public class UserServiceImpl implements UserService {
 
         return userModelMapper.resetPassword(userModel);
     }
+
+    @Override
+    public Boolean checkOldPassword(Long userId, String oldPassword) throws Exception {
+        BCryptPasswordEncoder encoder = bCryptPasswordEncoder();
+        String dbPassword = userModelMapper.selectOldPassword(userId);
+
+        return encoder.matches(oldPassword,dbPassword);
+    }
 }

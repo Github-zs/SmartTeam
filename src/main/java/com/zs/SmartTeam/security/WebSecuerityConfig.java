@@ -69,6 +69,8 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .authorizeRequests()
                 .antMatchers(
+                        "/",
+                        "/favicon.ico",
                         "/auth/token",
                         "/user/register"
                 ).permitAll()

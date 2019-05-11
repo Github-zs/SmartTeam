@@ -14,4 +14,6 @@ public interface UserService {
     int insert(UserModel userModel) throws Exception;
 
     int resetPassword(UserModel userModel);
+
+    Boolean checkOldPassword(Long userId, String oldPassword) throws Exception;
 }
