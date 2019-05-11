@@ -38,4 +38,9 @@ public class ShareServiceImpl implements ShareService {
     public int deleteById(Long shareId) {
         return mapper.deleteByPrimaryKey(shareId);
     }
+
+    @Override
+    public List<ShareManagementModel> selectByAuthor(Long shareAuthor) {
+        return mapper.selectByAuthor(shareAuthor);
+    }
 }

@@ -46,4 +46,13 @@ public interface ShareManagementModelMapper {
      * @mbggenerated Fri May 10 04:59:02 CST 2019
      */
     int updateByPrimaryKey(ShareManagementModel record);
+
+
+    /**
+     * select all share document by author id
+     *
+     * @param shareAuthor
+     * @return
+     */
+    List<ShareManagementModel> selectByAuthor(Long shareAuthor);
 }

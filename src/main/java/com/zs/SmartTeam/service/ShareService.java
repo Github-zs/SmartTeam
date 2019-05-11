@@ -14,4 +14,6 @@ public interface ShareService {
     int updateById(ShareManagementModel shareManagementModel);
 
     int deleteById(Long shareId);
+
+    List<ShareManagementModel> selectByAuthor(Long shareAuthor);
 }

@@ -67,4 +67,9 @@
     select share_id, share_content, share_author, create_date, update_date, share_title
     from "SmartTeam".share_management
   </select>
+  <select id="selectByAuthor" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select share_id, share_content, share_author, create_date, update_date, share_title
+    from "SmartTeam".share_management
+    where share_author = #{shareAuthor}
+  </select>
 </mapper>
