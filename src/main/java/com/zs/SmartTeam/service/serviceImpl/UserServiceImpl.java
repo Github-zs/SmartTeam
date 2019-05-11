@@ -37,9 +37,9 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public int insert(UserModel userModel) {
-//        BCryptPasswordEncoder encoder = bCryptPasswordEncoder();
-//        String registerPwd = userModel.getLoginPassword();
-//        userModel.setLoginPassword(encoder.encode(registerPwd));
+        BCryptPasswordEncoder encoder = bCryptPasswordEncoder();
+        String registerPwd = userModel.getLoginPassword();
+        userModel.setLoginPassword(encoder.encode(registerPwd));
         return userModelMapper.insert(userModel);
     }
 }

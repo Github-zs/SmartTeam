@@ -63,15 +63,20 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
 
 
     //装载BCrypt密码编码器
-    @Bean
-    public NoOpPasswordEncoder passwordEncoder() {
-        return  (NoOpPasswordEncoder)NoOpPasswordEncoder.getInstance();
-    }
+//    @Bean
+//    public NoOpPasswordEncoder passwordEncoder() {
+//        return  (NoOpPasswordEncoder)NoOpPasswordEncoder.getInstance();
+//    }
 
     //装载BCrypt密码编码器
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 //    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
+//    public Md5PasswordEncoder passwordEncoder() {
+//        return new Md5PasswordEncoder();
 //    }
 
     @Override
