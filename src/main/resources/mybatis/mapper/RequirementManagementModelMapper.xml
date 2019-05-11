@@ -74,7 +74,7 @@
   <select id="selectByAuthor" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select requirement_id, requirement_content, requirement_author, create_date, update_date,
     requirement_title
-    from "SmartTeam".requirement-management
+    from "SmartTeam".requirement_management
     where requirement_author = #{requirementId}
   </select>
 </mapper>
