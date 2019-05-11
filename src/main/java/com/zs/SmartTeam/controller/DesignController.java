@@ -39,4 +39,14 @@ public class DesignController {
         Long designAuthor = utils.returnLoginUserId(request);
         return service.selectByAuthor(designAuthor);
     }
+
+    @RequestMapping(value = { "/design/getById" }, method = RequestMethod.GET)
+    public DesignManagementModel selectById(Long designId) {
+        return service.selectById(designId);
+    }
+
+    @RequestMapping(value = { "/design/delete" }, method = RequestMethod.DELETE)
+    public int delete(Long designId) {
+        return service.delete(designId);
+    }
 }

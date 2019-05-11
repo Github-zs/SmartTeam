@@ -39,4 +39,14 @@ public class ShareController {
         Long shareAuthor = utils.returnLoginUserId(request);
         return service.selectByAuthor(shareAuthor);
     }
+
+    @RequestMapping(value = { "/share/getById" }, method = RequestMethod.GET)
+    public ShareManagementModel selectById(Long shareId) {
+        return service.selectById(shareId);
+    }
+
+    @RequestMapping(value = { "/share/delete" }, method = RequestMethod.DELETE)
+    public int delete(Long shareId) {
+        return service.deleteById(shareId);
+    }
 }

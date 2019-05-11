@@ -38,4 +38,14 @@ public class RequirementController {
         Long requirementAuthor = utils.returnLoginUserId(request);
         return service.selectByAuthor(requirementAuthor);
     }
+
+    @RequestMapping(value = { "/requirement/getById" }, method = RequestMethod.GET)
+    public RequirementManagementModel selectById(Long requirementId) {
+        return service.selectById(requirementId);
+    }
+
+    @RequestMapping(value = { "/requirement/delete" }, method = RequestMethod.DELETE)
+    public int delete(Long requirementId) {
+        return service.deleteById(requirementId);
+    }
 }
