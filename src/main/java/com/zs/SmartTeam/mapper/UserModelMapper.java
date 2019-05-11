@@ -55,4 +55,11 @@ public interface UserModelMapper {
      * @mbggenerated Sat May 04 06:23:37 CST 2019
      */
     int updateByPrimaryKey(UserModel record);
+
+    /**
+     * reset password by user login name
+     * @param record
+     * @return
+     */
+    int resetPassword(UserModel record);
 }

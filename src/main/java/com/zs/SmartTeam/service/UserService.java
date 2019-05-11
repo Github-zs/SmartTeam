@@ -12,4 +12,6 @@ public interface UserService {
     UserModel selectById(Long userId);
 
     int insert(UserModel userModel) throws Exception;
+
+    int resetPassword(UserModel userModel);
 }

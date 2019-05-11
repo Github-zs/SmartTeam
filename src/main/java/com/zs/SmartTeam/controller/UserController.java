@@ -1,11 +1,13 @@
 package com.zs.SmartTeam.controller;
 
+import com.zs.SmartTeam.common.Utils;
 import com.zs.SmartTeam.model.UserModel;
 import com.zs.SmartTeam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -13,6 +15,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private Utils utils;
 
     @RequestMapping(value = { "/userGetAll" }, method = RequestMethod.GET)
     public List<UserModel> selectAll() {
@@ -32,5 +37,12 @@ public class UserController {
     @RequestMapping(value = { "/user/register" }, method = RequestMethod.POST)
     public int insert(@RequestBody  UserModel userModel) throws Exception {
         return userService.insert(userModel);
+    }
+
+    @RequestMapping(value = { "/user/resetPassword" }, method = RequestMethod.POST)
+    public int resetPassword(HttpServletRequest request,@RequestBody UserModel userModel) {
+        Long userId = utils.returnLoginUserId(request);
+        userModel.setUserId(userId);
+        return userService.resetPassword(userModel);
     }
 }

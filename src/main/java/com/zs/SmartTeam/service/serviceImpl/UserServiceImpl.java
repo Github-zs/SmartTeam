@@ -46,4 +46,14 @@ public class UserServiceImpl implements UserService {
         userModel.setLoginPassword(encoder.encode(registerPwd));
         return userModelMapper.insert(userModel);
     }
+
+    @Override
+    public int resetPassword(UserModel userModel) {
+
+        BCryptPasswordEncoder encoder = bCryptPasswordEncoder();
+        String newPassword = userModel.getLoginPassword();
+        userModel.setLoginPassword(encoder.encode(newPassword));
+
+        return userModelMapper.resetPassword(userModel);
+    }
 }

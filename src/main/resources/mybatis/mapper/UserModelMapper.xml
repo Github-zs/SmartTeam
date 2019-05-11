@@ -46,6 +46,11 @@
       group_belonged = #{groupBelonged,jdbcType=BIGINT}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+  <update id="resetPassword" parameterType="com.zs.SmartTeam.model.UserModel">
+    update "SmartTeam".user
+    set login_password = #{loginPassword}
+    where user_id = #{userId}
+  </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
       WARNING - @mbggenerated
