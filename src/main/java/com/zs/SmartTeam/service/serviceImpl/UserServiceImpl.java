@@ -36,7 +36,11 @@ public class UserServiceImpl implements UserService {
         return new BCryptPasswordEncoder();
     }
     @Override
-    public int insert(UserModel userModel) {
+    public int insert(UserModel userModel) throws Exception {
+        UserModel haveUser = userModelMapper.selectByLoginName(userModel.getLoginName());
+        if (haveUser != null) {
+            throw new Exception("帐号已存在");
+        }
         BCryptPasswordEncoder encoder = bCryptPasswordEncoder();
         String registerPwd = userModel.getLoginPassword();
         userModel.setLoginPassword(encoder.encode(registerPwd));

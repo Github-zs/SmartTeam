@@ -30,35 +30,54 @@ public class WebSecuerityConfig extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
     }
 
+//    @Override
+//    protected void configure(HttpSecurity httpSecurity) throws Exception {
+//        httpSecurity
+//                // 由于使用的是JWT，我们这里不需要csrf
+//                .csrf().disable()
+//                // 基于token，所以不需要session
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .authorizeRequests()
+//                //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                // 允许对于网站静态资源的无授权访问
+//                .antMatchers(
+//                        HttpMethod.GET,
+//                        "/",
+//                        "/*.html",
+//                        "/favicon.ico",
+//                        "/**/*.html",
+//                        "/**/*.css",
+//                        "/**/*.js"
+//                ).permitAll()
+//                // 对于获取token的rest api要允许匿名访问
+//                .antMatchers("/auth/token").permitAll()
+//                // 除上面外的所有请求全部需要鉴权认证
+//                .anyRequest().authenticated()
+//                .and()
+//                .addFilter(new JWTAuthenticationFilter(authenticationManager()));
+//
+//        // 禁用缓存
+//        httpSecurity.headers().cacheControl();
+//    }
+
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                // 由于使用的是JWT，我们这里不需要csrf
+    protected void configure(HttpSecurity http) throws Exception {
+        http
                 .csrf().disable()
-                // 基于token，所以不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                // 允许对于网站静态资源的无授权访问
                 .antMatchers(
-                        HttpMethod.GET,
-                        "/",
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js"
+                        "/auth/token",
+                        "/user/register"
                 ).permitAll()
-                // 对于获取token的rest api要允许匿名访问
-                .antMatchers("/auth/token").permitAll()
-                // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()));
 
         // 禁用缓存
-        httpSecurity.headers().cacheControl();
+        http.headers().cacheControl();
     }
 
 

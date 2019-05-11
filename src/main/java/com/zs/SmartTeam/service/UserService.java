@@ -11,5 +11,5 @@ public interface UserService {
 
     UserModel selectById(Long userId);
 
-    int insert(UserModel userModel);
+    int insert(UserModel userModel) throws Exception;
 }

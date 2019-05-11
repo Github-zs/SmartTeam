@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @RequestMapping(value = { "/user/register" }, method = RequestMethod.POST)
-    public int insert(@RequestBody  UserModel userModel) {
+    public int insert(@RequestBody  UserModel userModel) throws Exception {
         return userService.insert(userModel);
     }
 }
