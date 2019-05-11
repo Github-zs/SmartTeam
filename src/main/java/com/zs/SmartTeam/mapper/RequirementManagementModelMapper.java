@@ -46,4 +46,12 @@ public interface RequirementManagementModelMapper {
      * @mbggenerated Fri May 10 04:58:38 CST 2019
      */
     int updateByPrimaryKey(RequirementManagementModel record);
+
+    /**
+     * select all requirement document by author id
+     *
+     * @param requirementAuthor
+     * @return
+     */
+    List<RequirementManagementModel> selectByAuthor(Long requirementAuthor);
 }

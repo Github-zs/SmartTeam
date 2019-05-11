@@ -14,4 +14,6 @@ public interface RequirementService {
     int updateById(RequirementManagementModel requirementManagementModel);
 
     int deleteById(Long requirementId);
+
+    List<RequirementManagementModel> selectByAuthor(Long requirementAuthor);
 }

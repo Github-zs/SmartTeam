@@ -38,4 +38,9 @@ public class RequirementServiceImpl implements RequirementService {
     public int deleteById(Long requirementId) {
         return mapper.deleteByPrimaryKey(requirementId);
     }
+
+    @Override
+    public List<RequirementManagementModel> selectByAuthor(Long requirementAuthor) {
+        return mapper.selectByAuthor(requirementAuthor);
+    }
 }
