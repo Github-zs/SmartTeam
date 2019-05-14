@@ -33,7 +33,8 @@ public class DatabaseUserDetailsService implements UserDetailsService {
 
         List<String> roleCodeList = userRoleHrefService.selectRoleByLoginName(loginName);
 
-        List<GrantedAuthority> authorities = roleCodeList.stream().map(e -> new SimpleGrantedAuthority(e)).collect(Collectors.toList());
+        List<GrantedAuthority> authorities = roleCodeList.stream().map(e -> new SimpleGrantedAuthority(e))
+                .collect(Collectors.toList());
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(
                 userModel.getLoginName(),userModel.getLoginPassword(),authorities);
 

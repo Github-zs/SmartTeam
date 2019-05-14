@@ -12,4 +12,6 @@ public interface TaskGroupExtService {
     int updateByPrimaryKey(TaskGroupExtModel taskGroupExtModel);
 
     List<TaskGroupExtModel> selectAll();
+
+    TaskGroupExtModel selectUrlByTask(Long taskId);
 }

@@ -33,4 +33,9 @@ public class TaskGroupExtServiceImpl implements TaskGroupExtService {
     public List<TaskGroupExtModel> selectAll() {
         return taskGroupExtModelMapper.selectAll();
     }
+
+    @Override
+    public TaskGroupExtModel selectUrlByTask(Long taskId) {
+        return taskGroupExtModelMapper.selectUrlByTask(taskId);
+    }
 }

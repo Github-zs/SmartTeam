@@ -54,4 +54,13 @@ public interface TaskGroupExtModelMapper {
      * @return
      */
     Long selectCountByGroup(Long groupBelonged);
+
+    /**
+     *
+     * select Url by task id
+     *
+     * @param taskId
+     * @return
+     */
+    TaskGroupExtModel selectUrlByTask(Long taskId);
 }

@@ -71,4 +71,9 @@
     where group_belonged = #{groupBelonged,jdbcType=BIGINT}
     group by group_belonged;
   </select>
+  <select id="selectUrlByTask" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select id, task_belonged, group_belonged, numerical_order, task_url
+    from "SmartTeam".task_group_ext
+    where task_belonged = #{taskId}
+  </select>
 </mapper>

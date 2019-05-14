@@ -25,4 +25,8 @@ public class TaskGroupExtController {
         return taskGroupExtService.selectAll();
     }
 
+    @RequestMapping(value = { "/selectUrlByTask" }, method = RequestMethod.GET)
+    public TaskGroupExtModel selectByExecutor(Long taskId) {
+        return taskGroupExtService.selectUrlByTask(taskId);
+    }
 }

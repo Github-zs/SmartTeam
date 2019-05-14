@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 public class TaskManagementController {
@@ -37,6 +38,14 @@ public class TaskManagementController {
     @RequestMapping(value = {"/selectTaskById"}, method = RequestMethod.GET)
     public TaskManagementModel selectTaskById(Long taskId) {
         return service.selectById(taskId);
+    }
+
+    @RequestMapping(value = { "/task/selectByExecutor" }, method = RequestMethod.GET)
+    public List<TaskManagementModel> selectByExecutor(HttpServletRequest request) {
+
+        Long userId = utils.returnLoginUserId(request);
+
+        return service.selectByExecutor(userId);
     }
 
 }

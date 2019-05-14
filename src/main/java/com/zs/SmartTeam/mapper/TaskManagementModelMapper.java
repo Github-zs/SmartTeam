@@ -46,4 +46,12 @@ public interface TaskManagementModelMapper {
      * @mbggenerated Sat May 04 21:16:19 CST 2019
      */
     int updateByPrimaryKey(TaskManagementModel record);
+
+    /**
+     * this method is select by user id
+     *
+     * @param userId
+     * @return
+     */
+    List<TaskManagementModel> selectByExecutor(Long userId);
 }

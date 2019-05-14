@@ -77,4 +77,10 @@
     task_executor, create_date, update_date
     from "SmartTeam".task_management
   </select>
+  <select id="selectByExecutor" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select task_id, task_title, task_source, task_description, task_status, task_reporter,
+    task_executor, create_date, update_date
+    from "SmartTeam".task_management
+    where task_executor = #{userId}
+  </select>
 </mapper>

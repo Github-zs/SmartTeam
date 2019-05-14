@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TaskManagementServiceImpl implements TaskManagementService {
@@ -66,6 +67,11 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     @Override
     public TaskManagementModel selectById(Long taskId) {
         return mapper.selectByPrimaryKey(taskId);
+    }
+
+    @Override
+    public List<TaskManagementModel> selectByExecutor(Long userId) {
+        return mapper.selectByExecutor(userId);
     }
 
 
