@@ -25,4 +25,24 @@ public class NoteServiceImpl implements NoteService {
         noteManagementModel.setCreateDate(new Date());
         return mapper.insert(noteManagementModel);
     }
+
+    @Override
+    public List<NoteManagementModel> selectByAuthor(Long authorId) {
+        return mapper.selectByAuthor(authorId);
+    }
+
+    @Override
+    public int deleteById(Long noteId) {
+        return mapper.deleteByPrimaryKey(noteId);
+    }
+
+    @Override
+    public NoteManagementModel selectById(Long noteId) {
+        return mapper.selectByPrimaryKey(noteId);
+    }
+
+    @Override
+    public int updateById(NoteManagementModel noteManagementModel) {
+        return mapper.updateByPrimaryKey(noteManagementModel);
+    }
 }

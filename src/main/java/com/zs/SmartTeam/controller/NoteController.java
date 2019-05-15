@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.rmi.CORBA.Util;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,5 +40,35 @@ public class NoteController {
        noteManagementModel.setNoteAuthor(author);
 
        return service.insert(noteManagementModel);
+    }
+
+    @RequestMapping(value = { "/note/selectByAuthor" }, method = RequestMethod.GET)
+    public List<NoteManagementModel> selectByAuthor(HttpServletRequest request) {
+
+        Long authorId = utils.returnLoginUserId(request);
+
+        return service.selectByAuthor(authorId);
+    }
+
+    @RequestMapping(value = { "/note/selectById" }, method = RequestMethod.GET)
+    public NoteManagementModel selectById(Long noteId) {
+
+        return service.selectById(noteId);
+
+    }
+
+    @RequestMapping(value = { "/note/update" }, method = RequestMethod.POST)
+    public int update(HttpServletRequest request, @RequestBody NoteManagementModel noteManagementModel) {
+        Long authorId = utils.returnLoginUserId(request);
+
+        noteManagementModel.setNoteAuthor(authorId);
+        noteManagementModel.setUpdateDate(new Date());
+
+        return service.updateById(noteManagementModel);
+    }
+
+    @RequestMapping(value = { "/note/delete" }, method = RequestMethod.DELETE)
+    public int delete(Long noteId) {
+        return service.deleteById(noteId);
     }
 }

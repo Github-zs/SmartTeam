@@ -46,4 +46,13 @@ public interface NoteManagementModelMapper {
      * @mbggenerated Fri May 10 04:54:52 CST 2019
      */
     int updateByPrimaryKey(NoteManagementModel record);
+
+
+    /**
+     * select current login user note
+     *
+     * @param authorId
+     * @return
+     */
+    List<NoteManagementModel> selectByAuthor(Long authorId);
 }
