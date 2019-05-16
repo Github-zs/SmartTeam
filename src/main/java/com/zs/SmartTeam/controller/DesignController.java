@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,5 +49,11 @@ public class DesignController {
     @RequestMapping(value = { "/design/delete" }, method = RequestMethod.DELETE)
     public int delete(Long designId) {
         return service.delete(designId);
+    }
+
+    @RequestMapping(value = { "/design/update" }, method = RequestMethod.POST)
+    public int updateById(@RequestBody DesignManagementModel designManagementModel) {
+        designManagementModel.setUpdateDate(new Date());
+        return service.updateById(designManagementModel);
     }
 }

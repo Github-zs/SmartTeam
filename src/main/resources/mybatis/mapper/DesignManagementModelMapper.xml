@@ -42,7 +42,6 @@
     -->
     update "SmartTeam".design_management
     set design_content = #{designContent,jdbcType=VARCHAR},
-      design_author = #{designAuthor,jdbcType=BIGINT},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       design_title = #{designTitle,jdbcType=VARCHAR}
