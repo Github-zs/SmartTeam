@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,5 +48,11 @@ public class RequirementController {
     @RequestMapping(value = { "/requirement/delete" }, method = RequestMethod.DELETE)
     public int delete(Long requirementId) {
         return service.deleteById(requirementId);
+    }
+
+    @RequestMapping(value = { "/requirement/update" }, method = RequestMethod.POST)
+    public int updateById(@RequestBody RequirementManagementModel requirementManagementModel) {
+        requirementManagementModel.setUpdateDate(new Date());
+        return service.updateById(requirementManagementModel);
     }
 }

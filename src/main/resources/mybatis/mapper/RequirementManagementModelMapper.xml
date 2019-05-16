@@ -44,7 +44,6 @@
     -->
     update "SmartTeam".requirement_management
     set requirement_content = #{requirementContent,jdbcType=VARCHAR},
-      requirement_author = #{requirementAuthor,jdbcType=BIGINT},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       requirement_title = #{requirementTitle,jdbcType=VARCHAR}
