@@ -42,7 +42,6 @@
     -->
     update "SmartTeam".share_management
     set share_content = #{shareContent,jdbcType=VARCHAR},
-      share_author = #{shareAuthor,jdbcType=BIGINT},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       share_title = #{shareTitle,jdbcType=VARCHAR}

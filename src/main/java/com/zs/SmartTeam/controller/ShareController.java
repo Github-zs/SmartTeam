@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,5 +49,11 @@ public class ShareController {
     @RequestMapping(value = { "/share/delete" }, method = RequestMethod.DELETE)
     public int delete(Long shareId) {
         return service.deleteById(shareId);
+    }
+
+    @RequestMapping(value = { "/share/update" }, method = RequestMethod.POST)
+    public int updateById(@RequestBody  ShareManagementModel shareManagementModel) {
+        shareManagementModel.setUpdateDate(new Date());
+        return service.updateById(shareManagementModel);
     }
 }
