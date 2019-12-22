@@ -12,6 +12,10 @@
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
     <result column="group_belonged" jdbcType="BIGINT" property="groupBelonged" />
+    <collection property="roles" ofType="com.zs.SmartTeam.model.RoleModel">
+      <id column="id" property="id"/>
+      <result column="role_name" property="roleName"/>
+    </collection>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--
@@ -79,5 +83,13 @@
     select login_password
     from "SmartTeam".user
     where user_id = #{userId}
+  </select>
+  <select id="selectByLogin" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select u.*
+    ,r.id,r.role_name
+    from user u
+    LEFT JOIN user_role sru on u.id = sru.user_id
+    LEFT JOIN role r on sru.role_id = r.id
+    where username= #{username}
   </select>
 </mapper>

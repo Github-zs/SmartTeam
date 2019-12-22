@@ -1,5 +1,6 @@
 package com.zs.SmartTeam.security;
 
+import com.zs.SmartTeam.model.AuthorityModel;
 import com.zs.SmartTeam.model.UserModel;
 import com.zs.SmartTeam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -20,11 +22,11 @@ public class OAuth2AuthenticationProvider implements AuthenticationProvider {
     @Autowired
     UserService service;
 
-    @Autowired
-    PermissionService permissionService;
+    //@Autowired
+    //PermissionService permissionService;
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication)  throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
@@ -49,36 +51,36 @@ public class OAuth2AuthenticationProvider implements AuthenticationProvider {
         Optional.ofNullable(user.getRoles()).orElse(new ArrayList<>())
                 .stream().forEach(role -> {
             AuthorityModel hrId = new AuthorityModel();
-            hrId.setPermissionName(role.getName());
+            hrId.setPermissionName(role.getRoleName());
             hrId.setPermissionId("role");
             authorityList.add(hrId);
         });
 
         // set user permission
-        Optional.ofNullable(permissionService.selectByUsername(username))
-                .orElse(new ArrayList<>()).stream()
-                .forEach(item -> {
-                    AuthorityModel authTemp = new AuthorityModel();
-                    authTemp.setPermissionId("permission");
-                    authTemp.setPermissionName(item.getName());
-                    authorityList.add(authTemp);
-                });
+//        Optional.ofNullable(permissionService.selectByUsername(username))
+//                .orElse(new ArrayList<>()).stream()
+//                .forEach(item -> {
+//                    AuthorityModel authTemp = new AuthorityModel();
+//                    authTemp.setPermissionId("permission");
+//                    authTemp.setPermissionName(item.getName());
+//                    authorityList.add(authTemp);
+//                });
 
         // set user id
-        AuthorityModel userId = new AuthorityModel();
-        userId.setPermissionId("USER_ID");
-        if (user.getId() != null) {
-            userId.setPermissionName(user.getId().toString());
-        }
-        authorityList.add(userId);
-
-        // set user name
-        AuthorityModel userName = new AuthorityModel();
-        userName.setPermissionId("USER_NAME");
-        if (user.getUsername() != null) {
-            userName.setPermissionName(user.getUsername());
-        }
-        authorityList.add(userName);
+//        AuthorityModel userId = new AuthorityModel();
+//        userId.setPermissionId("USER_ID");
+//        if (user.getId() != null) {
+//            userId.setPermissionName(user.getId().toString());
+//        }
+//        authorityList.add(userId);
+//
+//        // set user name
+//        AuthorityModel userName = new AuthorityModel();
+//        userName.setPermissionId("USER_NAME");
+//        if (user.getUsername() != null) {
+//            userName.setPermissionName(user.getUsername());
+//        }
+//        authorityList.add(userName);
 
         return new UsernamePasswordAuthenticationToken(user, password, authorityList);
     }

@@ -9,6 +9,8 @@ public interface UserService {
 
     UserModel selectByLoginName(String loginName);
 
+    UserModel selectByLogin(String loginName);
+
     UserModel selectById(Long userId);
 
     int insert(UserModel userModel) throws Exception;

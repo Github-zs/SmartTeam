@@ -17,7 +17,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
     @Autowired
     OAuth2AuthenticationProvider authenticationProvider;
 

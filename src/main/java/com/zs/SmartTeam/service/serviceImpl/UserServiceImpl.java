@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserModel selectByLogin(String loginName) {
+        return userModelMapper.selectByLogin(loginName);
+    }
+
+    @Override
     public UserModel selectById(Long userId) {
         return userModelMapper.selectByPrimaryKey(userId);
     }

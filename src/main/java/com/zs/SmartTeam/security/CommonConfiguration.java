@@ -9,18 +9,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class CommonConfiguration {
 
-//  @Bean
-//  public PasswordEncoder passwordEncoder() {
-//    return new BCryptPasswordEncoder();
-//  }
-
     @Bean
     UserDetailsService customUserService(){ //注册UserDetailsService 的bean
         return new CustomUserService();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return  NoOpPasswordEncoder.getInstance();
     }
 
