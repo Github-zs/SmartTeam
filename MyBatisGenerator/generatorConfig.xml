@@ -22,7 +22,7 @@
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="com.zs.SmartTeam.resource.mapper"  targetProject="/home/zhais/development/SmartTeam/src/main/resources">
+    <sqlMapGenerator targetPackage="mybatis.mapper"  targetProject="/home/zhais/development/SmartTeam/src/main/resources">
       <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
 
@@ -30,7 +30,7 @@
       <property name="enableSubPackages" value="false" />
     </javaClientGenerator>
  
-    <table tableName="user_role" domainObjectName="UserRoleModel" >
+    <table tableName="role_permission" domainObjectName="RolePermissionModel" >
       <property name="useActualColumnNames" value="false"/>
       <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
     </table>
