@@ -17,22 +17,22 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.zs.SmartTeam.model" targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/model">
+    <javaModelGenerator targetPackage="com.zs.SmartTeam.model" targetProject="/home/zhais/development/SmartTeam/src/main/java">
       <property name="enableSubPackages" value="false" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="com.zs.SmartTeam.resource.mapper"  targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/XML">
+    <sqlMapGenerator targetPackage="com.zs.SmartTeam.resource.mapper"  targetProject="/home/zhais/development/SmartTeam/src/main/resources">
       <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
 
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.zs.SmartTeam.mapper"  targetProject="/home/zhais/Downloads/MyBatisGenerator/mybatisGenerator/mapper">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.zs.SmartTeam.mapper"  targetProject="/home/zhais/development/SmartTeam/src/main/java">
       <property name="enableSubPackages" value="false" />
     </javaClientGenerator>
  
-    <table tableName="share_management" domainObjectName="ShareManagementModel" >
+    <table tableName="user_role" domainObjectName="UserRoleModel" >
       <property name="useActualColumnNames" value="false"/>
-      <generatedKey column="share_id" sqlStatement="JDBC" identity="true"/>
+      <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
     </table>
 
   </context>
